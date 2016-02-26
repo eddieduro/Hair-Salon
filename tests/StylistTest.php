@@ -106,5 +106,26 @@
 
 
 		}
+
+		function test_deleteStylist(){
+
+			// Arrange
+			$name1 = 'tom';
+			$stylist1= new Stylist($name1);
+			$stylist1->save();
+
+			$name2 = 'bob';
+			$stylist2= new Stylist($name2);
+			$stylist2->save();
+			// Act
+			
+			$stylist1->deleteStylist();
+
+			// Assert
+			$result = Stylist::getAll();
+			$this->assertEquals([$stylist2], $result);
+
+
+		}
 	}
 ?>

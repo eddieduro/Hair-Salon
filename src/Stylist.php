@@ -32,6 +32,10 @@
 			$this->id = $GLOBALS['DB']->lastInsertId();
 		}
 
+		function deleteStylist(){
+			$GLOBALS['DB']->exec("DELETE FROM stylists WHERE id = {$this->getId()};");
+		}
+
 		static function getAll(){
 			$returned_stylists = $GLOBALS['DB']->query("SELECT * FROM stylists");
 
