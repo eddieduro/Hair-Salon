@@ -55,8 +55,17 @@
     });
 
 		$app->get("/client/{id}", function ($id) use ($app) {
+			$stylist = Stylist::find($id);
     	$client = Client::find($id);
-    	return $app['twig']->render("current_stylist.html.twig", array(
+    	return $app['twig']->render("current_client.html.twig", array('stylist' => $stylist,
+    		'clients' => $client
+    	));
+    });
+
+		$app->get("/stylist/{id}/edit/{client_id}", function ($id, $client_id) use ($app) {
+			$stylist = Stylist::find($id);
+    	$client = Client::find($client_id);
+    	return $app['twig']->render("current_client.html.twig", array('stylist' => $stylist,
     		'clients' => $client
     	));
     });
