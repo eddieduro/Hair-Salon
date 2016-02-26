@@ -31,10 +31,23 @@
 			$this->assertEquals('susy', $current_stylist);
 		}
 
+		function test_getId(){
+			// Arrange
+			$name = 'susy';
+			$id = 1;
+			$new_stylist= new Stylist($name, $id);
+
+			// Act
+			$result = $new_stylist->getId();
+
+			// Assert
+			$this->assertEquals(1, $result);
+		}
+
 		function test_save(){
 
 			// Arrange
-			$name = 'susy';
+			$name = 'bill';
 			$new_stylist= new Stylist($name);
 
 			// Act
@@ -49,7 +62,7 @@
 		function test_getAll(){
 
 			// Arrange
-			$name = 'susy';
+			$name = 'chris';
 			$new_stylist= new Stylist($name);
 
 			// Act
@@ -65,7 +78,7 @@
 		function test_deleteAll(){
 
 			// Arrange
-			$name = 'susy';
+			$name = 'tom';
 			$new_stylist= new Stylist($name);
 
 			// Act
