@@ -14,6 +14,15 @@
 			return $this->name;
 		}
 
+		function setName($new_name){
+			$this->name = (string) $new_name;
+		}
+
+		function updateName($new_name){
+			$GLOBALS['DB']->exec("UPDATE stylists SET name = {$new_name} WHERE id = {$this->getId()};");
+			$this->setName($new_name);
+		}
+
 		function getId(){
 			return $this->id;
 		}

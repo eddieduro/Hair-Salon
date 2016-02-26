@@ -59,6 +59,21 @@
 			$this->assertEquals($new_stylist, $result[0]);
 		}
 
+		function test_updateName(){
+			// Arrange
+			$name = 'bill';
+			$new_stylist= new Stylist($name);
+			$new_stylist->save();
+
+			// Act
+			$new_name = 'tom';
+			$result = $new_stylist->updateName($new_name);
+
+
+			// Assert
+			$this->assertEquals('tom', $new_stylist->getName());
+		}
+
 		function test_getAll(){
 
 			// Arrange
