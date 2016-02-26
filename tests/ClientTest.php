@@ -8,7 +8,8 @@
 	* @backupStaticAttributes disabled
 	*/
 
-	$server = 'mysql:host=localhost:8889;dbname=hair_salon_test';
+	// $server = 'mysql:host=localhost:8889;dbname=hair_salon_test'; <--LOCAL LAPTOP
+	$server = 'mysql:host=localhost;dbname=hair_salon_test';
 	$user = 'root';
 	$password = 'root';
 	$DB = new PDO($server, $user, $password);
@@ -125,7 +126,7 @@
 			$client2 = new Client($name2, $stylist_id);
 			$client2->save();
 			// Act
-			
+
 			$client1->deleteClient();
 
 			// Assert

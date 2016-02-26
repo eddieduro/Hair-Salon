@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 	require_once 'src/Stylist.php';
 
@@ -7,7 +7,8 @@
   	* @backupStaticAttributes disabled
   	*/
 
-	$server = 'mysql:host=localhost:8889;dbname=hair_salon_test';
+	// $server = 'mysql:host=localhost:8889;dbname=hair_salon_test'; <--LOCAL LAPTOP
+	$server = 'mysql:host=localhost;dbname=hair_salon_test';
 	$user = 'root';
 	$password = 'root';
 	$DB = new PDO ($server, $user, $password);
@@ -141,7 +142,7 @@
 			$stylist2= new Stylist($name2);
 			$stylist2->save();
 			// Act
-			
+
 			$stylist1->deleteStylist();
 
 			// Assert
@@ -149,6 +150,21 @@
 			$this->assertEquals([$stylist2], $result);
 
 
+		}
+
+		function test_searchId(){
+			// Arrange
+			$name1 = 'tom';
+			$stylist1= new Stylist($name1);
+			$stylist1->save();
+
+			// Act
+			$id = $stylist1->getId();
+
+
+			// Assert
+			$result = $stylist1::find($id);
+			$this->assertEquals($stylist1, $result);
 		}
 	}
 ?>

@@ -6,7 +6,8 @@
 
 	$app = new Silex\Application();
 
-	$server = 'mysql:host=localhost:8889;dbname=hair_salon';
+	// $server = 'mysql:host=localhost:8889;dbname=hair_salon'; <-- LOCAL LAPTOP
+	$server = 'mysql:host=localhost;dbname=hair_salon';
 	$user = 'root';
 	$password = 'root';
 	$DB = new PDO($server, $user, $password);
@@ -23,7 +24,7 @@
     });
 
     $app->get("/stylists", function () use ($app) {
-    	return $app['twig']->render("stylist.html.twig", array( 'stylists',
+    	return $app['twig']->render("stylist.html.twig", array('stylists',
     		Stylist::getAll()
     	));
     });
@@ -31,6 +32,13 @@
     $app->post("/stylists", function () use ($app) {
     	$new_stylist = new Stylist($_POST['name']);
     	$new_stylist->save();
+    	return $app['twig']->render("stylist.html.twig", array(
+    		'stylists' => Stylist::getAll()
+    	));
+    });
+
+		$app->get("/stylists/{id}", function ($id) use ($app) {
+    	$current_stylist = Stylist::find($id);
     	return $app['twig']->render("stylist.html.twig", array(
     		'stylists' => Stylist::getAll()
     	));
