@@ -3,9 +3,9 @@
 	require_once 'src/Stylist.php';
 
 	/**
-  * @backupGlobals disabled
-  * @backupStaticAttributes disabled
-  */
+  	* @backupGlobals disabled
+  	* @backupStaticAttributes disabled
+  	*/
 
 	$server = 'mysql:host=localhost:8889;dbname=hair_salon_test';
 	$user = 'root';
