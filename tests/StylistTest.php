@@ -90,6 +90,29 @@
 
 		}
 
+		function test_getClients(){
+
+			// Arrange
+			$name = 'chris';
+			$id = null;
+			$new_stylist= new Stylist($name, $id);
+			$new_stylist->save();
+
+			$stylist_id = $new_stylist->getId();
+
+			$client = 'tom';
+			$new_client = new Client ($client, $stylist_id, $id);
+			$new_client->save();
+
+			// Act
+			$result = $new_stylist->getClients();
+
+			// Assert
+			$this->assertEquals([$new_client], $result);
+
+
+		}
+
 		function test_deleteAll(){
 
 			// Arrange
