@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Aveda Portland</title>
+
+</head>
+<body>
+	<h1>Aveda Portland</h1>
+	<ul>
+	{% for stylist in stylists %}
+		<li>{{ stylist.getName }}</li>
+	{% endfor %}
+	</ul>
+	<form action="/stylists" method="post">
+		<label for='name'>Stylist Name:</label>
+		<input name='name' id="name" type='text'>
+		<button type="submit"> Add stylist</button>
+	</form>
+</body>
+</html>
