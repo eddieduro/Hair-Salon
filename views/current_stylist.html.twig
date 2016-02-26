@@ -7,15 +7,21 @@
 </head>
 <body>
 	<h1>Aveda Portland</h1>
+	<h3>{{ stylist.getName }}</h3>
 	<ul>
-	{% for stylist in stylists %}
-		<a href="/stylists/{{ stylist.getId }}"><li>{{ stylist.getName }}</li></a>
+	{% for client in clients %}
+		<li>{{ client.getName }}</li>
+	<a href="/client/{{ client.getId }}"><button>View</button></a>
+	<a href="/stylist/{{ stylist.getId }}/edit/{{ client.getId }}"><button>Edit</button></a>
+	<a href="/stylist/{{ stylist.getId }}/delete/{{ client.getId }}"><button>Delete</button></a>
 	{% endfor %}
 	</ul>
-	<form action="/stylists" method="post">
-		<label for='name'>Stylist Name:</label>
-		<input name='name' id="name" type='text'>
-		<button type="submit"> Add stylist</button>
-	</form>
+
+	<form action="/stylist/{{ stylist.getId }}" method="post">
+		<label for="name">Client name:</label>
+		<input name="name" type="text">
+		<button type="submit">Add Client</button>
+ </form>
+
 </body>
 </html>

@@ -5,7 +5,7 @@
 		private $name;
 		private $stylist_id;
 		private $id;
-		
+
 		function __construct($name, $stylist_id, $id = null){
 			$this->name = $name;
 			$this->stylist_id = $stylist_id;
@@ -13,7 +13,7 @@
 		}
 
 		function getName(){
-			return $this->name; 
+			return $this->name;
 		}
 
 		function setName($new_name){
@@ -42,6 +42,19 @@
 			$GLOBALS['DB']->exec("DELETE FROM clients WHERE id = {$this->getId()};");
 		}
 
+		static function find($search_id){
+			$found_client = null;
+			$clients = Client::getAll();
+
+			foreach($clients as $client){
+				$client_id = $client->getId();
+				if($client_id = $search_id){
+					$found_client = $client;
+				}
+			}
+			return $found_client;
+		}
+
 		static function getAll(){
 			$returned_clients = $GLOBALS['DB']->query("SELECT * FROM clients");
 			$clients = array();
@@ -60,5 +73,5 @@
 			$GLOBALS['DB']->exec("DELETE FROM clients");
 		}
 
-	} 
+	}
 ?>

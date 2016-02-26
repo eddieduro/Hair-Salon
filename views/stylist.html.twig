@@ -9,7 +9,7 @@
 	<h1>Aveda Portland</h1>
 	<ul>
 	{% for stylist in stylists %}
-		<a href="/stylists/{{ stylist.getId }}"><li>{{ stylist.getName }}</li></a>
+		<a href="/stylist/{{ stylist.getId }}"><li>{{ stylist.getName }}</li></a>
 	{% endfor %}
 	</ul>
 	<form action="/stylists" method="post">

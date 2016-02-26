@@ -37,10 +37,27 @@
     	));
     });
 
-		$app->get("/stylists/{id}", function ($id) use ($app) {
-    	$current_stylist = Stylist::find($id);
-    	return $app['twig']->render("stylist.html.twig", array(
-    		'stylists' => Stylist::getAll()
+		$app->get("/stylist/{id}", function ($id) use ($app) {
+    	$stylist = Stylist::find($id);
+			$current_clients = $stylist->getClients();
+    	return $app['twig']->render("current_stylist.html.twig", array(
+    		'stylist' => $stylist, 'clients' => $current_clients
+    	));
+    });
+
+		$app->post("/stylist/{id}", function ($id) use ($app) {
+    	$stylist = Stylist::find($id);
+			$new_client = new Client($_POST['name'], $id);
+			$new_client->save();
+    	return $app['twig']->render("current_stylist.html.twig", array(
+    		'stylist' => $stylist, 'clients' => $stylist->getClients()
+    	));
+    });
+
+		$app->get("/client/{id}", function ($id) use ($app) {
+    	$client = Client::find($id);
+    	return $app['twig']->render("current_stylist.html.twig", array(
+    		'clients' => $client
     	));
     });
     return $app;
