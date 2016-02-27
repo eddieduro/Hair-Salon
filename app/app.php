@@ -37,6 +37,13 @@
     	));
     });
 
+		$app->delete("/stylist/{id}", function($id) use ($app) {
+        $stylist = Stylist::find($id);
+        $stylist->deleteStylist();
+        $current_stylists = Stylist::getAll();
+        return $app['twig']->render('stylist.html.twig', array('stylist' => $current_stylists));
+    });
+
 		$app->get("/stylist/{id}", function ($id) use ($app) {
     	$stylist = Stylist::find($id);
 			$current_clients = $stylist->getClients();
@@ -54,11 +61,11 @@
     	));
     });
 
-		$app->get("/client/{id}", function ($id) use ($app) {
+		$app->get("/stylist/{id}/view/{client_id}", function ($id) use ($app) {
 			$stylist = Stylist::find($id);
-    	$client = Client::find($id);
-    	return $app['twig']->render("current_client.html.twig", array('stylist' => $stylist,
-    		'clients' => $client
+    	$current_client = Client::find($id);
+    	return $app['twig']->render("view_client.html.twig", array('stylist' => $stylist,
+    		'client' => $current_client
     	));
     });
 

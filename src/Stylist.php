@@ -47,6 +47,15 @@
 			return $clients;
 		}
 
+		// function findClient(){
+		// 	$found_client = null;
+		// 	foreach($current_clients as $client){
+		// 		$client_id = $client->getId();
+		// 		if($client_id = $id){
+		// 			$found_client = $client;
+		// 		}
+		// 	}
+		// }
 		function deleteStylist(){
 			$GLOBALS['DB']->exec("DELETE FROM stylists WHERE id = {$this->getId()};");
 		}
