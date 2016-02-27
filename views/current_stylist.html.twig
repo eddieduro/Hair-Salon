@@ -13,7 +13,10 @@
 		<li>{{ client.getName }}</li>
 	<a href="/client/{{ client.getId }}"><button>View</button></a>
 	<a href="/stylist/{{ stylist.getId }}/edit/{{ client.getId }}"><button>Edit</button></a>
-	<a href="/stylist/{{ stylist.getId }}/delete/{{ client.getId }}"><button>Delete</button></a>
+	<form action="/stylist/{{ stylist.getId }}/delete/{{ client.getId }}" method="post">
+		<input name="_method" type="hidden" value="delete">
+		<button type="submit">Delete</button>
+	</form>
 	{% endfor %}
 	</ul>
 
