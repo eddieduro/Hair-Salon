@@ -35,7 +35,7 @@
 		function getClients(){
 			$clients = array();
 			$returned_clients = $GLOBALS['DB']->query("SELECT * FROM clients WHERE stylist_id = {$this->getId()};");
-
+			var_dump($returned_clients);
 			foreach($returned_clients as $client){
 				$name = $client['name'];
 				$stylist_id = $client['stylist_id'];
@@ -66,7 +66,7 @@
 
 			foreach($stylists as $stylist){
 				$stylist_id = $stylist->getId();
-				if($stylist_id = $search_id){
+				if($stylist_id == $search_id){
 					$found_stylist = $stylist;
 				}
 			}

@@ -20,7 +20,7 @@
 			$this->name = (string) $new_name;
 		}
 
-		function updateName($new_name){
+		function updateClient($new_name){
 			$GLOBALS['DB']->exec("UPDATE clients SET name = {$new_name} WHERE id = {$this->getId()};");
 			$this->setName($new_name);
 		}
@@ -48,7 +48,7 @@
 
 			foreach($clients as $client){
 				$client_id = $client->getId();
-				if($client_id = $search_id){
+				if($client_id == $search_id){
 					$found_client = $client;
 				}
 			}
